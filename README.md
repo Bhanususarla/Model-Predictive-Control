@@ -15,17 +15,17 @@ better when run alone.
 # 2. Model:
 a) The state vector includes the following six components:
 x - x co-ordinate, y- y co-ordinate, psi - angle of orientation wrt origin, v - speed of
-the vehicle, cte- cross track error, epsi - error in psi
+the vehicle, cte- cross track error, epsi - error in psi  
 b) The actuators/control parameters are steering angle(delta) between -25 and 25
-degrees and throttle (acceleration/decceleration) between -1 and 1.
+degrees and throttle (acceleration/decceleration) between -1 and 1.  
 c) A Kinematic motion model is used as the motion model with the following state
-update equations. They predict the state t based on the state at t-1.
-x_[t] = x[t-1] + v[t-1] * cos(psi[t-1]) * dt
-y_[t] = y[t-1] + v[t-1] * sin(psi[t-1]) * dt
-psi_[t] = psi[t-1] + v[t-1] / Lf * delta[t-1] * dt
-v_[t] = v[t-1] + a[t-1] * dt
-cte[t] = f(x[t-1]) - y[t-1] + v[t-1] * sin(epsi[t-1]) * dt
-epsi[t] = psi[t] - psides[t-1] + v[t-1] * delta[t-1] / Lf * dt
+update equations. They predict the state t based on the state at t-1.  
+x_[t] = x[t-1] + v[t-1] * cos(psi[t-1]) * dt  
+y_[t] = y[t-1] + v[t-1] * sin(psi[t-1]) * dt  
+psi_[t] = psi[t-1] + v[t-1] / Lf * delta[t-1] * dt  
+v_[t] = v[t-1] + a[t-1] * dt  
+cte[t] = f(x[t-1]) - y[t-1] + v[t-1] * sin(epsi[t-1]) * dt  
+epsi[t] = psi[t] - psides[t-1] + v[t-1] * delta[t-1] / Lf * dt  
 d) At each time step, the control variables for the next N time steps are optimized
 to minimize cost(objective) function. Cost function is the sum of deltas of CTE ,
 EPSI wrt predicted curve(polynomial) and velocity(compared to reference
